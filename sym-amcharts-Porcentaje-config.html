@@ -1,0 +1,214 @@
+<!-- *****************  CONFIGURACION DEL TEXTO *********************** -->
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">Título</span>
+</div>
+
+<div class="config-option-format">
+	<input id="titleText" ng-model="config.TitleText" config="config">
+	</input>
+</div>
+
+<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">
+	<input type="checkbox" class="c-config-checkbox" ng-model="config.showTitle">Mostrar Título<br />
+</label>
+
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">Texto</span>
+</div>
+
+<div class="config-option-format">
+	<pv-color-picker id="textColor" ng-model="config.textColor" config="config">
+	</pv-color-picker>
+</div>
+
+<!-- **************** CAMBIO PARA EL TAMAÑO DEL TEXTO **************** -->
+<div style="font-size: 14px; position:relative; margin-top: 4px; margin-bottom: 10px">
+	<font-resize id="FontSize" ng-model="config.FontSize" ></font-resize>
+</div>
+
+		<!-- *********************  SECCION DE COLORES 1   ******************* -->
+		<br>
+
+		<div class="c-side-pane t-toolbar">
+			<span style="color:#fff; margin-left:10px;">Sección de Colores 1</span>
+		</div>
+
+		<br>
+
+		<!-- **************** NUEVO DIV PARA EL CAMBIO DE COLORES ********************* -->
+		<!-- <span style="font-size: 14px; margin-left: 15px;">Index Color</span> -->
+		<!-- <select id="colorText" ng-model="config.selectColorText" class="config" style="width: 50px; margin-right: 5px; position: relative;">
+			<option value="0">1</option>
+			<option value="1">2</option>
+			<option value="2">3</option>
+			<option value="3">4</option>
+			<option value="4">5</option>
+			<option value="5">6</option>
+			<option value="6">7</option>
+			<option value="7">8</option>
+			<option value="8">9</option>
+			<option value="9">10</option>
+			<option value="10">11</option>
+			<option value="11">12</option>
+			<option value="12">13</option>
+			<option value="13">14</option>
+			<option value="14">15</option>
+			<option value="15">16</option>
+			<option value="16">17</option>
+			<option value="17">18</option>
+			<option value="18">19</option>
+			<option value="19">20</option>
+			<option value="20">21</option>
+			<option value="21">22</option>
+			<option value="22">23</option>
+			<option value="23">24</option>
+			<option value="24">25</option>
+			<option value="25">26</option>
+			<option value="26">27</option>
+			<option value="27">28</option>
+			<option value="28">29</option>
+			<option value="29">30</option>
+			<option value="30">31</option>
+			<option value="31">32</option>
+			<option value="32">33</option>
+			<option value="33">34</option>
+			<option value="34">35</option>
+		</select>
+
+		</br> -->
+		<!-- <br> -->
+
+		<!-- Esto eslo nuevo que se esta agregando para los colores -->
+		<div class="config-option-format">
+			<pv-color-picker id="selectColor" ng-model="config.selectColor" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor1" ng-model="config.selectColor1" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor2" ng-model="config.selectColor2" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor3" ng-model="config.selectColor3" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor4" ng-model="config.selectColor4" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor5" ng-model="config.selectColor5" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor6" ng-model="config.selectColor6" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor7" ng-model="config.selectColor7" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor8" ng-model="config.selectColor8" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor9" ng-model="config.selectColor9" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor10" ng-model="config.selectColor10" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor11" ng-model="config.selectColor11" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor12" ng-model="config.selectColor12" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor13" ng-model="config.selectColor13" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor14" ng-model="config.selectColor14" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor15" ng-model="config.selectColor15" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor16" ng-model="config.selectColor16" config="config">
+			</pv-color-picker>
+
+			<pv-color-picker id="selectColor17" ng-model="config.selectColor17" config="config">
+			</pv-color-picker>
+		</div>
+
+		<!-- ************* SECCION TAMAÑO DE DONA  ********************* -->
+
+		<br>
+
+		<div class="c-side-pane t-toolbar">
+			<span style="color:#fff; margin-left:10px;">Configuración de la Dona</span>
+		</div>
+
+		<br>
+
+		<label class="flex-align-center" style="margin-top:8px; margin-left: 12px;">
+			<input type="number" ng-model="config.angleDona"> Ángulo de dona <br />
+		</label>
+
+		</br>
+
+		<br>
+
+		<label class="flex-align-center" style="margin-top:8px; margin-left: 12px;">
+			<input type="number" ng-model="config.angleSize"> Tamaño <br />
+		</label>
+
+		<br />
+
+		<br>
+
+		<label class="flex-align-center" style="margin-top:8px; margin-left: 12px;">
+			<input type="number" ng-model="config.radio"> Radio Externo <br />
+		</label>
+
+		</br>
+
+		<br>
+        
+		<label class="flex-align-center" style="margin-top:8px; margin-left: 12px;">
+			<input type="number" ng-model="config.radioInterno"> Radio Interno <br />
+		</label>
+
+		<br />
+		<!-- ************* CONFIGURACIÓN DEL BALLOOM TEXT ********************* -->
+
+		<div class="c-side-pane t-toolbar">
+			<span style="color:#fff; margin-left:10px;">Configuración del PoopUp</span>
+		</div>
+		<div class="config-option-format">
+			<label>Color del PoopUp</label>
+		</div>
+		<div class="config-option-format">
+			<pv-color-picker id="colorPoopup" ng-model="config.colorPoopup" config="config">
+			</pv-color-picker>
+		</div>
+		<div class="config-option-format">
+			<label class="flex-align-center" style="margin-top:8px; margin-left: 8px; font-size: 85%;">
+				<input type="checkbox" class="c-config-checkbox" ng-model="config.colorCambiar">Mantener Color<br />
+			</label>
+		</div>
+		<div class="config-option-format">
+			<label>Tipo de letra</label>
+		</div>
+		<div class="config-option-format">
+			<select name="tipofuente" id="tipofuente" ng-model="config.tipofuente" config="config"> 
+				<option value="Georgia, serif">Georgia, serif</option>
+				<option value="monospace">monospace</option>
+				<option value="sans-serif">sans-serif</option>
+				<option value="serif">serif</option>
+				<option value="cursive">cursive</option>
+				<option value="system-ui">system-ui</option>
+			</select>
+		</div>
+		<div class="config-option-format">
+			<pv-color-picker id="colorText" ng-model="config.colorText" config="config">
+			</pv-color-picker>
+		</div>
+		<div class="config-option-format" style="font-size: 14px; position:relative; margin-top: 4px; margin-bottom: 10px">
+			Text Size  <input type="number" id="fontSizeUp" ng-model="config.fontSizeUp">
+		</div>
+		
