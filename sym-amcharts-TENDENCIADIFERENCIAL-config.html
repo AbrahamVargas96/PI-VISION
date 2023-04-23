@@ -1,0 +1,63 @@
+
+
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">TITULO</span>
+</div>
+<div class="config-option-format">
+	<input id="titleText" ng-model="config.TitleText" config="config">
+</input></div>
+<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">
+	<input type="checkbox" class="c-config-checkbox"
+		   ng-model="config.showTitle">Show Title<br />
+</label> 
+
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">TEXTO</span>
+</div>
+<div class="config-option-format">
+	<pv-color-picker id="textColor" ng-model="config.textColor" config="config">
+</pv-color-picker></div>	
+
+<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">
+	<input type="number"
+		   ng-model="config.fontSize">   Text Size<br />
+</label> 	 
+<br />  
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">FONDO INTERNO</span>
+</div>
+<div class="config-option-format">
+<pv-color-picker id="backgroundColor" ng-model="config.backgroundColor" config="config">
+</pv-color-picker></div>	
+<br />
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">FONDO DE AREA</span>
+</div>
+<div class="config-option-format">
+<pv-color-picker id="plotAreaFillColor" ng-model="config.plotAreaFillColor" config="config">
+</pv-color-picker></div>	
+
+<br />    
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">COLOR DE LINEA</span>
+</div>
+<div class="config-option-format">
+<pv-color-picker id="seriesColor" ng-model="config.seriesColor1" config="config">
+</pv-color-picker></div>
+<div class="config-option-format">
+	<pv-color-picker id="seriesColor" ng-model="config.seriesColor2" config="config">
+	</pv-color-picker></div>
+
+
+<br />    
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">COLOR DE BULLET</span>
+</div>
+<div class="config-option-format">
+	<pv-color-picker id="bullet" ng-model="config.bullet" config="config">
+	</pv-color-picker></div>
+
+ 
+
+
+

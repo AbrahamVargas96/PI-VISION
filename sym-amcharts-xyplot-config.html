@@ -12,7 +12,8 @@
 	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	See the License for the specific language governing permissions and
 	limitations under the License.
--->
+
+
 <div class="c-side-pane t-toolbar">
 	<span style="color:#fff; margin-left:10px;">Bullet</span>
 </div>
@@ -89,8 +90,122 @@
 	<input type="number" class=""
 		   ng-model="config.yMin">   Y-axis Minimum<br />
 </label>
-<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">
-	<input type="number" class=""
-		   ng-model="config.yMax">   Y-axis Maximum<br />
-</label>
-<br />
+-->
+
+
+
+
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">Dependencia</span>
+</div>
+<div class="config-option-format">
+	<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Dependencia:   
+		<select class="" ng-model="config.DependenciaXY" value="x">
+			<option value="x">x</option>
+			<option value="y">y</option>			
+		</select>
+	</label>
+	<label  style="margin-left: 8px;">Nombre de Tag: </label><input type="text" id="ValorFijo"  maxlength="50" size="20" ng-model="config.ValorFijo" style="margin-left: 55px;"><br />	
+	
+</div>
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">Escalas</span>
+</div>
+<div class="config-option-format">
+	<label  style="margin-left: 8px;">xi: </label><input type="number" id="xIni"  maxlength="5" size="5" ng-model="config.xIni" style="margin-left: 55px;"><br />
+	<label  style="margin-left: 8px;">xf: </label><input type="numer" id="xFin" maxlength="5" size="5" ng-model="config.xFin" style="margin-left: 55px;"><br />
+	<label  style="margin-left: 8px;">Intervalo x:</label><input type="number" maxlength="5" size="5" id="xInterv" ng-model="config.xInterv"><br />
+	<label  style="margin-left: 8px;">yi: </label><input type="numer" id="yIni" maxlength="5" size="5" ng-model="config.yIni" style="margin-left: 55px;"><br />
+	<label  style="margin-left: 8px;">yf: </label><input type="numer" id="yFin" maxlength="5" size="5" ng-model="config.yFin" style="margin-left: 55px;"><br />
+	<label  style="margin-left: 8px;">Intervalo y:</label><input type="number" id="yInterv" maxlength="5" size="5" ng-model="config.yInterv"><br />
+
+</div>
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">Presición Décimales</span>
+</div>
+<div class="config-option-format">
+	<label  style="margin-left: 8px;">x: </label><input type="number" id="|1 "  maxlength="4" size="4" ng-model="config.xPre" style="margin-left: 55px;"><br />
+	<label  style="margin-left: 8px;">y: </label><input type="number" id="yPre" maxlength="4" size="4" ng-model="config.yPre" style="margin-left: 55px;"><br />
+</div>
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">Estilo Marcador</span>
+</div>
+
+<div class="config-option-format">
+	<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Color Elemento 1: </br>
+	<pv-color-picker id="ColorElementOne" ng-model="config.ColorElementOne" config="config">
+		<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Color Elemento 1: </br>
+</pv-color-picker></div>
+
+<div class="config-option-format">
+	<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Color Elemento 2: </br>
+	<pv-color-picker id="ColorElementTwo" ng-model="config.ColorElementTwo" config="config">
+		<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Color Elemento 2: </br>
+</pv-color-picker></div>
+
+<div class="config-option-format">
+	<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Marcador:   
+		<select class="" ng-model="config.bulletType" value="round">
+			<option value="round">Circulo</option>
+			<option value="square">Cuadrado</option>
+			<option value="triangleUp">Triángulo</option>	
+			<option value="triangleDown">Triángulo Invertido</option>
+			<option value="triangleLeft">Trángulo Izquierda</option>				
+			<option value="triangleRight">Triángulo Derecha</option>								
+			<option value="bubble">Burbuja</option>
+			<option value="diamond">Diamante</option>
+		</select>
+	</label>
+</div>
+
+<div class="config-option-format">
+	<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Tamaño:   
+		<select class="" ng-model="config.bulletSize" value="5">
+			<option value="1">1</option>
+			<option value="5">5</option>
+			<option value="10">10</option>
+			<option value="15">15</option>	
+			<option value="20">20</option>
+		</select>
+	</label>
+</div>
+
+<div class="c-side-pane t-toolbar">
+	<span style="color:#fff; margin-left:10px;">Estilo Ejes</span>
+</div>
+
+<div class="config-option-format">
+	<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Orientación Eje y:   
+		<select class="" ng-model="config.YAxisPos" value="left">
+			<option value="left">Izquierda</option>
+			<option value="right">Derecha</option>
+		</select>
+	</label>
+</div>
+
+<div class="config-option-format">
+	<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Color Eje Y: </br>
+	<pv-color-picker id="colorYAxis" ng-model="config.colorYAxis" config="config">
+	</label>
+</pv-color-picker></div>
+
+<div class="config-option-format">
+	<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Color Eje X: </br>
+	<pv-color-picker id="colorXAxis" ng-model="config.colorXAxis" config="config">
+	</label>
+</pv-color-picker></div>
+
+<div class="config-option-format">
+	<label class="flex-align-center" style="margin-top:8px; margin-left: 8px;">Opacidad Cuadrícula:   
+		<select class="" ng-model="config.GridOpacity" value="0.15">
+			<option value="0">0</option>
+			<option value="0.15">0.15</option>
+			<option value="1">1</option>		
+		</select>
+	</label>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
