@@ -128,24 +128,7 @@
                 console.log("elementos: " + JSON.stringify(element));
                 array.push(element.color);
             });
-            
-            var arrayDataprovider = new Array();
-            
-            for (var i = 0; i <= newdata.Rows.length-1; i++) {
-                
-                const valor = ""+dataprovider[i].litres+"";
-                const newValor = valor.replace(/[.,]/g, "");
-                //console.log(newValor);
 
-            var propiedadesGrafica = new Object();
-            propiedadesGrafica.name=dataprovider[i].name;
-            propiedadesGrafica.litres=newValor;
-            propiedadesGrafica.STAMPTIME=dataprovider[i].STAMPTIME;
-
-            arrayDataprovider.push(propiedadesGrafica);
-            } 
-
-            //console.log("ARREGLO DE PROVIDER NEW: "+ JSON.stringify(arrayDataprovider));
             var dataProviderd = [
                 {
                     "country": "Lithuania",
@@ -174,14 +157,9 @@
                 }
             ];
 
-            console.log("ARRAY DE TITULOS porcentaje" + JSON.stringify(dataprovider));
-            var styleFamily =  scope.config.tipofuente;
+            console.log("ARRAY DE TITULOS porcentaje" + JSON.stringify(dataProviderd));
 
-           var balloonText  = "<div style='font-family:"+styleFamily+";'><b> [[name]] </b> <br>valor </br> <b>[[litres]]</b> <br> <span style='font-size:50'> <br> Tiempo: [[STAMPTIME]] </br> </span></div>";
-            
-
-            chart.dataProvider = arrayDataprovider;
-            chart.balloonText  = ""+balloonText+"";
+            chart.dataProvider = dataprovider;
             chart.validateData();
         }
 
@@ -208,28 +186,47 @@
 
         //Se crea funcion para parseo de los datos
         function estarData(caso, valorReal) {
-            if (caso === 1) {
+
+            var pointsParsial ;
+            if (caso == 1) {
                 // Algoritmo para distincion
             }
             else {
-             var dato=valorReal.split(',');
+          //   var dato=valorReal.split(',');
 
-              if(dato.length==1){var cantidad=dato;}else{var cantidad=dato[0]+dato[1];}
+            //  if(dato.length==1){var cantidad=dato;}else{var cantidad=dato[0]+dato[1];}
              
               //  var pointsParsial = parseFloat(valorReal.replace(/\,/g, "."));
             //  console.log("abrahamdato:"+valorReal);
-                var pointsParsial = parseFloat(valorReal);
+          /// pointsParsial = parseFloat(valorReal);
+
+ if(valorReal==NaN || valorReal==null){pointsParsial=0;}else{
+
+pointsParsial = RestructValue(valorReal);
+            
+
+ }
+
+
+
+
             }
-            console.log("abraham dato:"+valorReal);
+          
+
+
+             
+
+  console.log("abraham dato:"+valorReal+"valor float:::>"+pointsParsial);
+
             return pointsParsial;
         }
 
         function getChartConfig() {
-            
+
             return {
                 "type": "pie",
                 "theme": "none",
-                " fontSize": 300,
+
                 "titles": createArrayOfChartTitles(),
 
                 "radius": "35%",
@@ -237,17 +234,17 @@
                 "gradientRatio": [0.4, 0.4, 0 ,0.2, -0.2],
                 "colors": [], //Nuevo
                 // "colors": [scope.config.selectColorText, scope.config.selectColorText, scope.config.selectColorText], // Se cambia por la matriz que se esta utilizando 
-               // "balloonText": "<div style='font-family:"+styleFamily+";'><b> [[name]] </b> <br>valor </br> <b>[[value]]</b> <br> <span style='font-size:50'> <br> Tiempo: [[STAMPTIME]] </br> </span></div>",
+                "balloonText": "<b> [[name]] </b> <br>valor </br> <b>[[value]]</b> <br> <span style='font-size:50'> <br> Tiempo: [[STAMPTIME]] </br> </span>",
                 "valueField": "litres",
                 "titleField": "country",
                 "angle": 25, // Para ver el angulo de la dona
                 "depth3D": 0,
                 "balloon": {
                     "drop": false, //True maneja el Globo, en False se maneja un cuadrado
-                    //"adjustBorderColor": false, //Color del contorno de adentro de los ballons
-                   // "fillColor": "#0000FF",
-                    //"color": "#FFFFFF", //Se cambia por la matriz que se esta utilizando para los colores
-                    " fontSize": 300,
+                    "adjustBorderColor": false, //Color del contorno de adentro de los ballons
+                    // "color": "#FFFFFF",  
+                    "color": [], //Se cambia por la matriz que se esta utilizando para los colores
+                    "FontSize": 50,
                 },
                 "export": {
                     "enabled": true
@@ -259,6 +256,221 @@
         // Function that returns an array of titles
         //************************************
         //
+
+
+
+        function RestructValue(VALOR){
+
+
+            ///EJEMPLO DE UNA ARRAY COMO NEWDATA:
+            var arrV = new Array();
+            // var ResulValor = "";    
+            var ResulValor = ""; 
+            
+            for (var i = 0; i <= 0; i++) {
+               var ob = new Object();
+               //Sustituir por dataprovider
+              
+               //ob.Val = "166555";  newdata.Rows[i].Value;
+               ob.Val =VALOR;
+              
+               arrV.push(ob);
+            
+               var condicion = ob.Val.includes('.');//Debuelve ture o false si encuentra .
+            
+               if(condicion == true){
+                   //CONTADOR DE puntos
+                   var TotalPuntos = ob.Val.match(/[.]/g).length;//total puntos
+                   console.log("Total de puntos " + TotalPuntos); // Total puntos
+                   
+                   if (TotalPuntos == 1){
+                       //DIVIDR EN ARRAY 12.999,001,66
+                       var dividir_valor = ob.Val.split('.', 2);
+                       var div1 = dividir_valor[0];//12
+                       var div2 = dividir_valor[1];//999,001,66
+                   
+                       console.log(div1 +" y "+ div2);//12 y 999,001,66
+                   
+                       var buscar_div1 = div1.includes(',');//true o false
+                       var buscar_div2 = div2.includes(',');//true o false incluir .
+                       
+                       console.log(buscar_div2);
+                   
+                       if(buscar_div2 == true){//PARA valores 999,001,66
+                           //PRIMER ARRAY div2
+                           //si el arreglo tiene comas esta mal, y cambiar el ultimo por .
+                           var indiceValue = div2.lastIndexOf(",");//7
+                           var arrayValue = div2.split("");//arreglo para que pueda leer splice
+                           var replaceValue =  arrayValue.splice(indiceValue, 1, '.');//replazar el indice por el .
+                           
+                           console.log("ARREGLO " + arrayValue);
+                           console.log("Indice a cambiar " + replaceValue);
+                           
+                           var cadena = arrayValue.toString();
+                           var Valuestring = cadena.replace(/[,]/g,'');
+                           
+                           console.log("Valor despues del .: " + div2);
+                           console.log("Valor corregido parte decima:  " + Valuestring);
+                       
+                           //SEGUNDO ARRAY div1
+                           var replaceValor = div1.replace(/[,]/g,'');
+                           var ValorGuardar = replaceValor + Valuestring;//12999001.66
+                           
+            
+                           var vl = ValorGuardar.split('.', 2);
+                           var d1 = vl[0];//12999001
+                           var d2 = vl[1];//66
+            
+                           var TotalIn =  d2.length;
+                           console.log("Valor correcto: " + TotalIn);
+                           if(TotalIn <= 2){
+                               ResulValor=ValorGuardar;
+                           }else{
+                               var re = ValorGuardar.replace('.','');
+                               ResulValor=re;
+                           }
+                           /*else if (TotalIn == 3 ){
+                               var vr = ValorGuardar.replace('.','');
+                               ResulValor=vr;
+                           }else if (TotalIn >= 4 ){
+                               ResulValor=ValorGuardar;
+                           }*/
+                       
+                           console.log("Valor correcto: " + ValorGuardar);
+                   
+                       }else if(buscar_div2 == false){
+                           //166.55
+                           var replaceV = div1.replace(/[,]/g,'');
+                           var ValorUnir = replaceV + "." + div2;
+            
+                           var vl = ValorUnir.split('.', 2);
+                           var d1 = vl[0];//12999001
+                           var d2 = vl[1];//66
+            
+                           var TotalIn =  d2.length;
+                           console.log("Valor correcto: " + TotalIn);
+                           if(TotalIn <= 2){
+                               ResulValor=ValorUnir;
+                           }else{
+                               var re = ValorUnir.replace('.','');
+                               ResulValor=re;
+                           }
+                           /*else if (TotalIn == 3 ){
+                               var vr = ValorUnir.replace('.','');
+                               ResulValor=vr;
+                           }else if (TotalIn >= 4 ){
+                               ResulValor=ValorUnir;
+                           }*/
+                           console.log("Valor correcto: " + ValorUnir);
+                       }
+               
+                   }else if (TotalPuntos >= 2){
+                       //PARA LOS QUE TIENEN MUCHOS puntos 10.000.10 AUN FALTA
+                       var Tp = ob.Val.replace(/[,|.]/g,'-');
+            
+                       var TpA = Tp.split("");//Array
+                       var TpI = TpA.lastIndexOf("-");//indice manda un Numero
+                       var TpR =  TpA.splice(TpI, 1, '.');//replazar el indice por el .
+                       
+                       var TpC = TpA.toString();
+                       var TpS = TpC.replace(/[,|-]/g,'');//Valuestring
+            
+                           var vl = TpS.split('.', 2);
+                           var d1 = vl[0];//12999001
+                           var d2 = vl[1];//66
+            
+                           var TotalIn =  d2.length;
+                           console.log("Valor correcto: " + TotalIn);
+                           if(TotalIn <= 2){
+                               ResulValor=TpS;
+                           }else{
+                               var re = TpS.replace('.','');
+                               ResulValor=re;
+                           }
+                           /*else if (TotalIn == 3 ){
+                               var vr = ValorUnir.replace('.','');
+                               ResulValor=vr;
+                           }else if (TotalIn >= 4 ){
+                               ResulValor=ValorUnir;
+                           }*/
+            
+                       console.log("ARREGLO " + TpA);
+                       console.log("String " + TpC);
+                       console.log("Indice a cambiar " + ResulValor);
+            
+                       
+                   }
+               }else if (condicion == false){
+                   //si no tiene . o ,
+                   var comaTue = ob.Val.includes(',');
+                   console.log("Total de comas " + comaTue); // Total comas
+                   if(comaTue == true){
+                       //SOLO COMAS 34,677,889,99
+                       //DIVIDR EN ARRAY 34,677,889,99
+            
+                       var CA = ob.Val.split("");//Array
+                       var CI = CA.lastIndexOf(",");//indice manda un Numero
+                       var CR =  CA.splice(CI, 1, '.');//replazar el indice por el .
+                       var CC = CA.toString();
+                       var CS = CC.replace(/[,]/g,'');//Valuestring
+            
+                           var vl = CS.split('.', 2);
+                           var d1 = vl[0];//12999001
+                           var d2 = vl[1];//66
+            
+                           var TotalIn =  d2.length;
+                           console.log("Valor correcto: " + TotalIn);
+                           if(TotalIn <= 2){
+                               ResulValor=CS;
+                           }else{
+                               var re = CS.replace('.','');
+                               ResulValor=re;
+                           }
+                           /*else if (TotalIn == 3 ){
+                               var vr = CS.replace('.','');
+                               ResulValor=vr;
+                           }else if (TotalIn >= 4 ){
+                               ResulValor=CS;
+                           }*/
+            
+            
+                       console.log("ARREGLO " + CA);
+                       console.log("Indice a cambiar " + ResulValor);
+                   }else if(comaTue == false){
+                       ///NUMERO ENTERO SIN COMA
+                       var res = ob.Val;
+                       ResulValor=res;
+            
+                       console.log("Valor modificado: " + ResulValor);
+                   }
+                   
+            
+               }
+               
+               
+            }
+            console.log("Valor variable:) " + ResulValor);
+            
+              
+            ///
+                  
+            
+            
+            
+            return ResulValor;
+            
+            }
+            
+            
+
+
+
+
+
+
+
+
+        //////////////////////////////////////
 
         function createArrayOfChartTitles() {
             var titleText = scope.config.TitleText;
@@ -281,22 +493,22 @@
 
             // Update the even and odd colors
 
-            if (chart) {
+            
                 // Apply new settings
 
                 chart.titles[0].text = scope.config.TitleText;
                 chart.titles[0].size = scope.config.FontSize;
 
                 // Update the title
-                if (scope.config.showTitle) {
+                if (scope.config.showTitle==true) {
                     chart.titles[0].text = scope.config.TitleText;
                 } else {
                     chart.titles[0].text = "";
                 }
 
-                if (chart.color != scope.config.textColor) {
+              
                     chart.color = scope.config.textColor;
-                }
+             
 
                 //Angulos
                 chart.depth3D = scope.config.angleSize;
@@ -314,9 +526,9 @@
                 // }else{
                 //     chart.colors
                 // }
-
+            var colores=new Array();
                 //Esto es lo nuevo que estamos agregando para los nuevos colores
-                chart.colors [0] = scope.config.selectColor;
+              /*  chart.colors [0] = scope.config.selectColor;
                 chart.colors [1] = scope.config.selectColor1;
                 chart.colors [2] = scope.config.selectColor2;
                 chart.colors [3] = scope.config.selectColor3;
@@ -333,23 +545,34 @@
                 chart.colors [14] = scope.config.selectColor14;
                 chart.colors [15] = scope.config.selectColor15;
                 chart.colors [16] = scope.config.selectColor16;
-                chart.colors [17] = scope.config.selectColor17;
+                chart.colors [17] = scope.config.selectColor17;*/
 
-                chart.balloon.fontSize = scope.config.fontSizeUp;
-                chart.balloon.color = scope.config.colorText;
-                
+                colores [0] = scope.config.selectColor;
+                colores [1] = scope.config.selectColor1;
+                colores [2] = scope.config.selectColor2;
+                colores [3] = scope.config.selectColor3;
+                colores [4] = scope.config.selectColor4;
+                colores [5] = scope.config.selectColor5;
+                colores [6] = scope.config.selectColor6;
+                colores [7] = scope.config.selectColor7;
+                colores [8] = scope.config.selectColor8;
+                colores [9] = scope.config.selectColor9;
+                colores [10] = scope.config.selectColor10;
+                colores [11] = scope.config.selectColor11;
+                colores [12] = scope.config.selectColor12;
+                colores [13] = scope.config.selectColor13;
+                colores [14] = scope.config.selectColor14;
+                colores [15] = scope.config.selectColor15;
+                colores [16] = scope.config.selectColor16;
+                colores [17] = scope.config.selectColor17;
+                chart.colors=colores;
 
-                if (scope.config.colorCambiar) {
-                    chart.balloon.adjustBorderColor = true;
-                    chart.balloon.fillColor = scope.config.colorPoopup;
-                } else {
-                    chart.balloon.adjustBorderColor = false;
-                }
 
-                console.log("Muestra de chart colors: " + chart.colors);
+
+                console.log("Muestra de chart colors: " + chart.colors[0]);
                 chart.validateNow();
-                console.log("Configuration update porcentaje");
-            }
+                console.log("Configuration update porcentajes");
+            
         }
     }
     CS.symbolCatalog.register(myCustomSymbolDefinition);
